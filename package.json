@@ -1,6 +1,6 @@
 {
   "name": "custom-node-http-mitm-proxy",
-  "version": "0.1.0",
+  "version": "0.4.0",
   "description": "Custom HTTP Man In The Middle (MITM) Proxy",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
