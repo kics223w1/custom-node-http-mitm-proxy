@@ -1,13 +1,9 @@
-# HTTP MITM Proxy
+## This is the rewrite library from [node-http-mitm-proxy](https://github.com/joeferner/node-http-mitm-proxy)
 
-This is the rewrite library from [node-http-mitm-proxy](https://github.com/joeferner/node-http-mitm-proxy)
-
-We can get full request body before making any connection from the proxy server and the real server on this rewrite library
+## We can get full request body before making any connection from the proxy server and the real server on this rewrite library
 
 [![NPM version](http://img.shields.io/npm/v/http-mitm-proxy.svg)](https://www.npmjs.com/package/http-mitm-proxy)
 [![](https://david-dm.org/joeferner/node-http-mitm-proxy.svg)](https://david-dm.org/joeferner/node-http-mitm-proxy)
-[![Downloads](https://img.shields.io/npm/dm/http-mitm-proxy.svg)](https://www.npmjs.com/package/http-mitm-proxy)
-![Test Status](https://github.com/joeferner/node-http-mitm-proxy/workflows/Tests/badge.svg)
 
 # Install
 
