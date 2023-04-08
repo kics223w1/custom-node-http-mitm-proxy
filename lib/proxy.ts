@@ -1150,9 +1150,8 @@ export class Proxy implements IProxy {
         agent: ctx.isSSL ? self.httpsAgent : self.httpAgent,
       };
 
-      // Before making the connection between the proxy server and the real server
-      // We emit the request body first, so the user can use this before invoking
-      // the function callBack in event onRequest.
+      // Before making the connection between the proxy server and the real server.
+      // We emit the request body first, so the user can use this before the `onRequest` event is triggered.
       ctx.requestFilters.push(new ClientFinalRequestFilter(self, ctx));
       var prevRequestPipeElem = ctx.clientToProxyRequest;
       ctx.requestFilters.forEach(function (filter) {
@@ -1162,6 +1161,9 @@ export class Proxy implements IProxy {
         );
         prevRequestPipeElem = prevRequestPipeElem.pipe(filter);
       });
+
+      // Removing the ClientFinalRequestFilter object to prevent potential bugs after the work has done.
+      ctx.requestFilters.pop();
 
       return self._onRequest(ctx, (err) => {
         if (err) {
