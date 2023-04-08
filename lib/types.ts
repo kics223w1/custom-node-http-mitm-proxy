@@ -294,7 +294,7 @@ export type IContext = ICallbacks &
     /** filters added by .addResponseFilter() */
     responseFilters: any[];
 
-    /** contains the chunk of request body */
+    /** contains the request body */
     requestBodyBuffer: Buffer[];
 
     /** undocumented, allows adjusting the request in callbacks (such as .onRequest()) before sending  upstream (to proxy or target host)..

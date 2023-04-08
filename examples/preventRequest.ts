@@ -10,9 +10,21 @@ proxy.onError((ctx, err, errorKind) => {
   console.error(`${errorKind} on ${url}:`, err);
 });
 
-proxy.onRequest((ctx, callback) => {
-  ctx.proxyToClientResponse.end("Hacked, you cannot proceed to the website");
-  // no callback() so proxy request is not sent to the server
+proxy.onRequest((ctx, callbackOnRequest) => {
+  let requestBodyBuffer: Buffer[] = [];
+
+  proxy.onRequestData(function (ctx, chunk, callback) {
+    requestBodyBuffer.push(chunk);
+    callback(null, chunk);
+  });
+
+  proxy.onRequestEnd(function (ctx, callback) {
+    const rawBody = Buffer.concat(requestBodyBuffer);
+
+    console.log("Request body before event onRequest has triggered: ", rawBody);
+
+    callbackOnRequest();
+  });
 });
 
 proxy.listen({ port });

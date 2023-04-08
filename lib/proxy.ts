@@ -1150,8 +1150,8 @@ export class Proxy implements IProxy {
         agent: ctx.isSSL ? self.httpsAgent : self.httpAgent,
       };
 
-      // Before making the connection between the proxy server and the real server.
-      // We emit the request body first, so the user can use this before the `onRequest` event is triggered.
+      // Before making the connection between the proxy server and the real server,
+      // we emit the request body first, so the user can use this before the `onRequest` event is triggered.
       ctx.requestFilters.push(new ClientFinalRequestFilter(self, ctx));
       var prevRequestPipeElem = ctx.clientToProxyRequest;
       ctx.requestFilters.forEach(function (filter) {
