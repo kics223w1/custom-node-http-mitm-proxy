@@ -18,12 +18,12 @@
 proxy.onRequest(function (ctx, callbackOnRequest) {
   let requestBody: Buffer[] = [];
 
-  proxy.onRequestData(function (ctx, chunk, callback) {
+  ctx.onRequestData(function (ctx, chunk, callback) {
     requestBody.push(chunk);
     callback(null, chunk);
   });
 
-  proxy.onRequestEnd(function (ctx, callback) {
+  ctx.onRequestEnd(function (ctx, callback) {
     const rawBody = Buffer.concat(requestBodyBuffer);
 
     console.log("Request body before event onRequest has triggered: ", rawBody);
